@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator with AI Voice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e6f7ff; /* Light blue background color */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+
+        label, select, input, button {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50; /* Green */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Language Translator with AI Voice</h1>
+    <form method="post">
+        <label for="input_text">Enter the text you want to translate:</label>
+        <input type="text" name="input_text" required>
+        <label for="target_language">Choose a target language:</label>
+        <select name="target_language">
+            <option value="hi">Hindi</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="ur">Urdu</option>
+            <option value="ar">Arabic</option>
+        </select>
+        <button type="submit">Translate</button>
+    </form>
+    {% if input_text and translated_text %}
+        <p>Original text: {{ input_text }}</p>
+        <p>Translated text ({{ target_language }}): {{ translated_text }}</p>
+
+        <audio controls>
+            <source src="data:audio/mp3;base64,{{ mp3_base64 }}" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+    {% endif %}
+    <footer>
+        <p style="color: #fff;">Created by Arsh Malek</p>
+    </footer>
+</body>
+</html>
